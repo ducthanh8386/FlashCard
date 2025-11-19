@@ -11,20 +11,12 @@ import java.awt.Color;
 public class Main {
 
     public static void main(String[] args) {
-        // 1. Khởi tạo Model
         FlashCardManager model = new FlashCardManager();
-
-        // 2. Khởi tạo Controller và truyền Model vào
         CardControl controller = new CardControl(model);
-
-        // 3. Khởi tạo View và truyền Controller vào
-        // Đảm bảo Swing chạy trên EDT
         SwingUtilities.invokeLater(() -> {
             FlashCardAppView view = new FlashCardAppView(controller);
 
-            //  Thiết lập Event Listeners (Kết nối View và Controller)
-
-            // --- Xử lý sự kiện Thêm thẻ ---
+     // them, the moi
             view.getAddButton().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -33,7 +25,7 @@ public class Main {
 
                     if (controller.addCard(english, vietnamese)) {
                         view.clearInputFields();
-                        view.updateCardListDisplay(); // Cập nhật danh sách thẻ
+                        view.updateCardListDisplay(); 
                     } else {
                         view.showMessage("Vui lòng nhập đầy đủ cả Tiếng Anh và Tiếng Việt!",
                                 "Lỗi Nhập liệu", JOptionPane.ERROR_MESSAGE);
@@ -41,7 +33,7 @@ public class Main {
                 }
             });
 
-            // --- Xử lý sự kiện Hiện nghĩa ---
+    
             view.getShowAnswerButton().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -50,7 +42,7 @@ public class Main {
                 }
             });
 
-            // --- Xử lý sự kiện Thẻ tiếp theo ---
+            // The tiep theo
             view.getNextCardButton().addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
